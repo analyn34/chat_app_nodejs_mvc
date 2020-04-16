@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var http = require('http');
 var server = http.createServer(app);
-var io = require('socket.io').listen(server);
+global.io = require('socket.io').listen(server);
 
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 const chat = require('./routes');
 
-var dbUrl = '';
+var dbUrl = 'mongodb+srv://analynadmin:product34@productapp-xxkem.mongodb.net/test?retryWrites=true&w=majority';
 
 io.on('connection', () => {
   console.log('a user is connected');
